@@ -1,0 +1,21 @@
+html {
+	font-size: 120%;
+}
+
+h1 {
+	text-align: center;
+}
+
+body {
+	text-align: center;
+}
+
+.form-control{
+	display: inline-block!important;
+	width: 45px!important;
+	margin: 0 10px;
+}
+
+.obs {
+	color: #AAA;
+}

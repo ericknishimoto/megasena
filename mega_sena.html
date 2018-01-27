@@ -1,0 +1,172 @@
+<html>
+	<head>
+		<title>Mega Sena </title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	</head>
+	<body>
+
+	<div class="page-header">
+	<h1>Mega Sena Simulator</h1>
+	</div>
+	
+	<div class="container theme-showcase">
+
+	<div class="well">
+		<h4>Teste sua sorte!</h4>
+		<p>Digite abaixo os números que deseja apostar de  1 a 60, e clique em "Apostar!"</p>
+
+		<div>
+			<br>
+			<form class="form-signin">
+			<input id="num_um" class="form-control" maxlength="2">
+			<input id="num_dois" class="form-control" maxlength="2">
+			<input id="num_tres" class="form-control" maxlength="2">
+			<input id="num_quatro" class="form-control" maxlength="2">
+			<input id="num_cinco" class="form-control" maxlength="2">
+			<input id="num_seis" class="form-control" maxlength="2">
+			<button id="apostar" class="btn btn-lg btn-primary">Apostar!</button>
+			</form>
+			<br>
+			<p class="obs">Resultado no Console - F12 </p>
+		</div>
+	</div>
+
+	<br>
+
+	<div class="well">
+			<h4>Gerador de jogos</h4>
+			<p>Clique em "Gerar" e crie um jogo automaticamente.</p>
+	
+			<div>
+				<br>
+				<form class="form-signin">
+				<button id="gerar" class="btn btn-lg btn-primary">Gerar!</button>
+				</form>
+			</div>
+	</div>
+</div>
+		<script>
+
+			function pulaLinha(){
+				document.write("<br>");
+			}
+
+			function mostra(msg){
+				document.write(msg);
+			}
+
+			function sorteia(){
+				//Sorteia um número de 0 a 60
+				numero = Math.round(Math.random()*60);
+				if (numero != 0) {
+					return numero;
+				} else {
+					numero = Math.round(Math.random()*60);	
+					return numero;				
+				}
+			}
+
+			function criaSorteio(){
+				for (var i = 0; i < 7; i++) {	//loop de 6x
+
+					var achou = false	//declara falso
+					numero=sorteia();	//sorteia um número			
+
+					for (var i = 0; i < listaNumeros.length; i++)	//loop do tamanho do array
+
+						if (numero == listaNumeros[i]){	//se num sorteado for igual a numero array break
+							achou=true;
+							break;
+						}
+						if (achou == false) {	//se achou permanecer false push no array
+							listaNumeros.push(numero);	//push no array
+							i++;
+						}
+				}
+			}
+
+			function verifica(){
+
+			var input = document.querySelector("#num_um");
+			var input = parseInt(document.querySelector("#num_dois"));
+			var input = parseInt(document.querySelector("#num_tres"));
+			var input = parseInt(document.querySelector("#num_quatro"));
+			var input = parseInt(document.querySelector("#num_cinco"));
+			var input = parseInt(document.querySelector("#num_seis"));
+
+			for(var i=0; i<6; i++){
+				if (num_um.value == listaNumeros[i]){
+					pontos++;
+					break;
+				}
+			}
+						for(var i=0; i<6; i++){
+				if (num_dois.value == listaNumeros[i]){
+					pontos++;
+					break;
+				}
+			}
+						for(var i=0; i<6; i++){
+				if (num_tres.value == listaNumeros[i]){
+					pontos++;
+					break;
+				}
+			}
+						for(var i=0; i<6; i++){
+				if (num_quatro.value == listaNumeros[i]){
+					pontos++;
+					break;
+				}
+			}
+						for(var i=0; i<6; i++){
+				if (num_cinco.value == listaNumeros[i]){
+					pontos++;
+					break;
+				}
+			}
+						for(var i=0; i<6; i++){
+				if (num_seis.value == listaNumeros[i]){
+					pontos++;
+					break;
+				}
+			}
+				
+				if (pontos < 4) {
+					mostra("<head><link rel='stylesheet' type='text/css' href='style.css'><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' crossorigin='anonymous'></head><br><div class='container theme-showcase'><div class='alert alert-danger'><h3>Você acertou menos de 4 números, infelizmente não ganhou nada.<br><b><br>A probabilidade de acerto da Mega Sena é de 1 em 50 milhões!<br></b><br>Acho que é melhor voltar ao trabalho... =(<h3></div><br><a class='btn btn-lg btn-primary' href='mega_sena.html'>Voltar</a></div>");	
+				} else if (pontos == 4) {
+					mostra("<head><link rel='stylesheet' type='text/css' href='style.css'><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' crossorigin='anonymous'></head><br><div class='container theme-showcase'><div class='alert alert-success'><h3>Você acertou a QUADRA, parabéns!<br><b><br>Pena que isto é só uma simulação.<br></b><br>Acho que é melhor voltar ao trabalho... =(<h3></div><br><a class='btn btn-lg btn-primary' href='mega_sena.html'>Voltar</a></div>");	
+				} else if (pontos == 5) {
+					mostra("<head><link rel='stylesheet' type='text/css' href='style.css'><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' crossorigin='anonymous'></head><br><div class='container theme-showcase'><div class='alert alert-success'><h3>Você acertou a QUINA, parabéns!<br><b><br>Pena que isto é só uma simulação.<br></b><br>Acho que é melhor voltar ao trabalho... =(<h3></div><br><a class='btn btn-lg btn-primary' href='mega_sena.html'>Voltar</a></div>");					
+				} else {
+					mostra("<head><link rel='stylesheet' type='text/css' href='style.css'><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' crossorigin='anonymous'></head><br><div class='container theme-showcase'><div class='alert alert-success'><h3>Você acertou a SENA, parabéns!<br><b><br>Pena que isto é só uma simulação.<br></b><br>Acho que é melhor voltar ao trabalho... =(<h3></div><br><a class='btn btn-lg btn-primary' href='mega_sena.html'>Voltar</a></div>");	
+				}
+
+			}
+
+			function gerar(){
+				mostra("<head><link rel='stylesheet' type='text/css' href='style.css'><link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' crossorigin='anonymous'></head><br><div class='container theme-showcase'><div class='alert alert-success'><h3>Seus números da sorte são:<br><b><br>" + listaNumeros + "<br></b><br>Se ganhar, não esqueça de fortalecer a amizade com aquela contribuição. =)<h3></div><br><a class='btn btn-lg btn-primary' href='mega_sena.html'>Voltar</a></div>");	
+			}
+
+			var listaNumeros = []; //Declarar array
+
+			criaSorteio();
+
+			pontos="";	
+
+			for(var i = 0; i < 6; i++) {
+				console.log(listaNumeros[i]);
+			}
+
+			var button = document.querySelector("#apostar");
+			button.onclick = verifica;	
+
+			var button = document.querySelector("#gerar");
+			button.onclick = gerar;
+
+		</script>
+
+	</body>
+
+</html>
